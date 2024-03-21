@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 54320
+  username: postgres
+  password: postgres@123
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: Comee_inventory_development
+
+
+test:
+  <<: *default
+  database: Comee_inventory_test
+
+production:
+  <<: *default
+  database: Comee_inventory_production
+  username: Comee_inventory
+  password: <%= ENV["COMEE_INVENTORY_DATABASE_PASSWORD"] %>
