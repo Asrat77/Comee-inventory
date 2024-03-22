@@ -9,6 +9,8 @@ RSpec.describe "PurchaseOrderItems", type: :request do
       status: "Draft",
       delivery_date: Date.current.advance(days: 7),
       quantity: 7,
+      unit_price: 10,
+      total_price: 70,
       purchase_order_id: create(:purchase_order).id
     }
   end
