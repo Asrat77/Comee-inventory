@@ -14,5 +14,7 @@ class PurchaseOrder < ApplicationRecord
 
   validates :status, inclusion: { in: STATUSES }
 
+  delegate(:name, to: :supplier, prefix: true)
+
 
 end
