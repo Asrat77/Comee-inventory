@@ -8,5 +8,10 @@ RSpec.describe PurchaseOrderItem, type: :model do
       {status: [:presence, inclusion: [[:in_array, PurchaseOrderItem::STATUSES]]]}
     ]
 
+    it "validates total_price" do
+      poi = create(:purchase_order_item, unit_price: 10, quantity: 5)
+      expect(poi.total_price).to eq(50)
+    end
+
     include_examples("model_shared_spec", :purchase_order_item, attribs)
 end

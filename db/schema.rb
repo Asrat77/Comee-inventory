@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_21_133237) do
     t.string "status", null: false
     t.date "delivery_date", null: false
     t.float "quantity", null: false
+    t.float "unit_price", null: false
+    t.float "total_price", null: false
     t.bigint "purchase_order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
