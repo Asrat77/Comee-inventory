@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_22_025923) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_22_080341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_22_025923) do
     t.index ["supplier_id"], name: "index_purchase_orders_on_supplier_id"
   end
 
+  create_table "received_items", force: :cascade do |t|
+    t.float "quantity_ordered", null: false
+    t.float "quantity_received"
+    t.float "unit_price", null: false
+    t.float "total_price", null: false
+    t.bigint "purchase_order_item_id", null: false
+    t.bigint "good_recieve_note_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["good_recieve_note_id"], name: "index_received_items_on_good_recieve_note_id"
+    t.index ["purchase_order_item_id"], name: "index_received_items_on_purchase_order_item_id"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -59,4 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_22_025923) do
   add_foreign_key "good_recieve_notes", "purchase_orders"
   add_foreign_key "purchase_order_items", "purchase_orders"
   add_foreign_key "purchase_orders", "suppliers"
+  add_foreign_key "received_items", "good_recieve_notes"
+  add_foreign_key "received_items", "purchase_order_items"
 end
