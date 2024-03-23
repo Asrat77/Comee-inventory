@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Supplier, type: :model do
   attribs = [
-      {name: :presence}
-    ]
+    { name: :presence }
+  ]
 
-    include_examples("model_shared_spec", :supplier, attribs)
+  include_examples('model_shared_spec', :supplier, attribs)
 end

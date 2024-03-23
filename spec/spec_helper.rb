@@ -1,5 +1,5 @@
-require "support/models/shared_examples"
-require "support/requests/shared_requests"
+require 'support/models/shared_examples'
+require 'support/requests/shared_requests'
 # require_relative 'custom_formatter.rb'
 
 RSpec.configure do |config|

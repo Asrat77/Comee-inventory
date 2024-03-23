@@ -1,17 +1,17 @@
 VALIDATIONS = {
-  presence: "validate_presence_of",
-  uniqueness: "validate_uniqueness_of",
-  numericality: "validate_numericality_of",
-  inclusion: "validate_inclusion_of",
-  belong_to: "belong_to",
-  have_many: "have_many",
-  have_and_belong_to_many: "have_and_belong_to_many"
+  presence: 'validate_presence_of',
+  uniqueness: 'validate_uniqueness_of',
+  numericality: 'validate_numericality_of',
+  inclusion: 'validate_inclusion_of',
+  belong_to: 'belong_to',
+  have_many: 'have_many',
+  have_and_belong_to_many: 'have_and_belong_to_many'
 }.freeze
 
-RSpec.shared_examples "model_shared_spec" do |factory, attribs, subj = true|
+RSpec.shared_examples 'model_shared_spec' do |factory, attribs, subj = true|
   subject { create(factory) } if subj
 
-  it "has a valid factory" do
+  it 'has a valid factory' do
     expect(create(factory)).to be_valid
   end
 

@@ -10,30 +10,30 @@ module Common
 
   def index
     data = if block_given?
-      yield
-    else
-      @clazz.all
-    end
-    render json: {success: true, data: serialize(data)}
+             yield
+           else
+             @clazz.all
+           end
+    render json: { success: true, data: serialize(data) }
   end
 
   def show
-    render json: {success: true, data: serialize(@obj)}
+    render json: { success: true, data: serialize(@obj) }
   end
 
   def create
     obj = if block_given?
-      yield
-    else
-      @clazz.new(model_params)
-    end
+            yield
+          else
+            @clazz.new(model_params)
+          end
     if obj.save
-      render json: {success: true, data: serialize(obj)}, status: :created
+      render json: { success: true, data: serialize(obj) }, status: :created
     else
-      render json: {success: false, error: obj.errors.full_messages[0]}, status: :unprocessable_entity
+      render json: { success: false, error: obj.errors.full_messages[0] }, status: :unprocessable_entity
     end
-  rescue => e
-    render json: {success: false, error: e.message}
+  rescue StandardError => e
+    render json: { success: false, error: e.message }
   end
 
   def update
@@ -43,12 +43,12 @@ module Common
       obj = @obj
     end
     if obj.update(model_params)
-      render json: {success: true, data: serialize(obj)}, status: :ok
+      render json: { success: true, data: serialize(obj) }, status: :ok
     else
-      render json: {error: obj.errors, success: false}, status: :unprocessable_entity
+      render json: { error: obj.errors, success: false }, status: :unprocessable_entity
     end
-  rescue => e
-    render json: {success: false, error: e.message}
+  rescue StandardError => e
+    render json: { success: false, error: e.message }
   end
 
   def destroy
@@ -70,6 +70,5 @@ module Common
   end
 
   # override by the child controllers
-  def model_params
-  end
+  def model_params; end
 end

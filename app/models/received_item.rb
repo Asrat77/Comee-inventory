@@ -5,7 +5,6 @@ class ReceivedItem < ApplicationRecord
 
   validates :quantity_ordered, :quantity_received, :unit_price, :total_price, presence: true
 
-
   def update_total_price
     self.total_price ||= 0
     self.total_price = unit_price * quantity_received
