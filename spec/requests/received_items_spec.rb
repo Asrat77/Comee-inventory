@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "ReceivedItems", type: :request do
-
-  include_examples("request_shared_spec", "received_items", 7)
-
+RSpec.describe 'ReceivedItems', type: :request do
+  include_examples('request_shared_spec', 'received_items', 5)
 
   let(:valid_attributes) do
     {
@@ -18,7 +16,7 @@ RSpec.describe "ReceivedItems", type: :request do
 
   let(:invalid_attributes) do
     {
-      quantity_ordered: nil,
+      quantity_ordered: nil
     }
   end
 
