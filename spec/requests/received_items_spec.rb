@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'ReceivedItems', type: :request do
@@ -7,8 +9,8 @@ RSpec.describe 'ReceivedItems', type: :request do
     {
       quantity_ordered: 20,
       quantity_received: 18,
-      unit_price: 200,
-      total_price: 3600,
+      unit_price: 20,
+      total_price: 360,
       purchase_order_item_id: create(:purchase_order_item).id,
       good_recieve_note_id: create(:good_recieve_note).id
     }
