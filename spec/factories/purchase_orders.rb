@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :purchase_order do
     po_number { Faker::Alphanumeric.alpha(number: 10) }

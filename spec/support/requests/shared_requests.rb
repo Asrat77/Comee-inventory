@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples 'request_shared_spec' do |controller, field_count, exclude = []|
   include Rails.application.routes.url_helpers
 

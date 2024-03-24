@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GoodRecieveNote < ApplicationRecord
   has_many :received_items
   belongs_to :purchase_order

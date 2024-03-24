@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :good_recieve_note do
     grn_number { Faker::Alphanumeric.alpha(number: 10) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -54,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 20_240_322_080_341) do
     t.float 'quantity_ordered', null: false
     t.float 'quantity_received'
     t.float 'unit_price', null: false
-    t.float 'total_price', null: false
+    t.float 'total_price'
     t.bigint 'purchase_order_item_id', null: false
     t.bigint 'good_recieve_note_id', null: false
     t.datetime 'created_at', null: false
