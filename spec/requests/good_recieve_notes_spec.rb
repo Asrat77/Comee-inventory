@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'GoodRecieveNotes', type: :request do
-  include_examples('request_shared_spec', 'good_recieve_notes', 8)
+  include_examples('request_shared_spec', 'good_recieve_notes', 10)
 
   let(:valid_attributes) do
     {
