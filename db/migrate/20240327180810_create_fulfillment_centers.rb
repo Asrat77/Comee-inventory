@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateFulfillmentCenters < ActiveRecord::Migration[7.0]
   def change
     create_table :fulfillment_centers do |t|
