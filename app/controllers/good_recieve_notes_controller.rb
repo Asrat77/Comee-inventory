@@ -35,7 +35,8 @@ class GoodRecieveNotesController < ApplicationController
   def prepare_result_for_json
     {
       header: { grn_number: @grn.grn_number, date_of_receipt: @grn.date_of_receipt,
-                supplier_name: @grn.purchase_order.supplier_name },
+                supplier_name: @grn.purchase_order.supplier_name, comments: @grn.comments,
+                received_condition: @grn.recieved_condition },
       items: {
         received_items: serialize(@received_items),
         total_quantity: @grn.total_quantity,

@@ -51,9 +51,12 @@ RSpec.describe 'GoodRecieveNotes', type: :request do
         expect(ri.good_recieve_note_id).to eq grn.id
       end
       received_items_quantity = received_items.sum(&:quantity_received)
+      received_items_total_amount = received_items.sum(&:total_price)
+
       get generate_grn_url(id: grn.id), headers:, as: :json
       grn.reload
       expect(grn.total_quantity).to eq received_items_quantity
+      expect(grn.total_amount).to eq received_items_total_amount
     end
   end
 end
