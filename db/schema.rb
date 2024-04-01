@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_065614) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_31_062226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_065614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["purchase_order_id"], name: "index_good_recieve_notes_on_purchase_order_id"
+  end
+
+  create_table "goods_issued_notes", force: :cascade do |t|
+    t.string "gin_number", null: false
+    t.date "date_issued", null: false
+    t.string "issued_by", null: false
+    t.string "issued_to", null: false
+    t.bigint "fulfillment_center_id", null: false
+    t.bigint "sales_order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fulfillment_center_id"], name: "index_goods_issued_notes_on_fulfillment_center_id"
+    t.index ["sales_order_id"], name: "index_goods_issued_notes_on_sales_order_id"
   end
 
   create_table "purchase_order_items", force: :cascade do |t|
@@ -78,6 +91,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_065614) do
     t.index ["purchase_order_item_id"], name: "index_received_items_on_purchase_order_item_id"
   end
 
+  create_table "sales_orders", force: :cascade do |t|
+    t.string "order_number", null: false
+    t.date "order_date", null: false
+    t.string "order_terms"
+    t.string "delivery_address"
+    t.date "delivery_date", null: false
+    t.string "status", default: "Draft", null: false
+    t.float "total_price"
+    t.string "remark"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -85,6 +111,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_065614) do
   end
 
   add_foreign_key "good_recieve_notes", "purchase_orders"
+  add_foreign_key "goods_issued_notes", "fulfillment_centers"
+  add_foreign_key "goods_issued_notes", "sales_orders"
   add_foreign_key "purchase_order_items", "purchase_orders"
   add_foreign_key "purchase_orders", "suppliers"
   add_foreign_key "received_items", "good_recieve_notes"
